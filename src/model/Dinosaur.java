@@ -5,13 +5,26 @@
  */
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
+
+@Entity
+@Table(name="dinos")
 
 public class Dinosaur {
 	
 	
 	//initializing variables
+	@Id
+	@GeneratedValue
+	@Column(name="ID")
 	private int id;
+	@Column(name="SPECIES")
 	private String species;
+	@Column(name="COLOR")
 	private String color;
 	
 	//constructors
