@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -9,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ViewAllDinosServlett
+ * Servlet implementation class AddDinosForSurveyServlet
  */
-@WebServlet("/viewAllDinosServlett")
-public class ViewAllDinosServlett extends HttpServlet {
+@WebServlet("/addDinosForSurveyServlet")
+public class AddDinosForSurveyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAllDinosServlett() {
+    public AddDinosForSurveyServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,17 +26,16 @@ public class ViewAllDinosServlett extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DinosaurHelper dino = new DinosaurHelper();
+		// TODO Auto-generated method stub
+		DinosaurHelper dah = new DinosaurHelper();
 		
-		request.setAttribute("allDinos", dino.showAllDinos());
+		request.setAttribute("allDinos", dah.showAllDinos());
 		
-		String path = "/survey.jsp";
-		
-		if (dino.showAllDinos().isEmpty()){
-				path = "/index.html";
+		if(dah.showAllDinos().isEmpty()) {
+			request.setAttribute("allDinos", " ");
 		}
 		
-		getServletContext().getRequestDispatcher(path).forward(request, response);
+		getServletContext().getRequestDispatcher("/new-survey.jsp").forward(request, response);
 	}
 
 	/**

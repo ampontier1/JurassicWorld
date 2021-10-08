@@ -41,7 +41,7 @@ public class EditSurveyServlet extends HttpServlet {
 		
 		dino.updateDino(dinoToUpdate);
 		
-		getServletContext().getRequestDispatcher("/viewAllDinosServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/viewAllDinosServlett").forward(request, response);
 	}
 
 }

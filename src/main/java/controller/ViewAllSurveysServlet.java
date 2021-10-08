@@ -1,24 +1,27 @@
-
 package controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.ParkSurvey;
+
 /**
- * Servlet implementation class ViewAllDinosServlett
+ * Servlet implementation class ViewAllSurveysServlet
  */
-@WebServlet("/viewAllDinosServlett")
-public class ViewAllDinosServlett extends HttpServlet {
+@WebServlet("/viewAllSurveysServlet")
+public class ViewAllSurveysServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ViewAllDinosServlett() {
+    public ViewAllSurveysServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,17 +30,18 @@ public class ViewAllDinosServlett extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DinosaurHelper dino = new DinosaurHelper();
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		request.setAttribute("allDinos", dino.showAllDinos());
+		ParkSurveyHelper psh = new ParkSurveyHelper();
+		List<ParkSurvey> abc = psh.getSurvey();
+		request.setAttribute("allLists", abc);
 		
-		String path = "/survey.jsp";
-		
-		if (dino.showAllDinos().isEmpty()){
-				path = "/index.html";
+		if(abc.isEmpty()) {
+			request.setAttribute("allLists", " ");
 		}
 		
-		getServletContext().getRequestDispatcher(path).forward(request, response);
+		getServletContext().getRequestDispatcher("/survey-by-park.jsp").forward(request, response);
 	}
 
 	/**

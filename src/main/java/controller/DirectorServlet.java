@@ -43,7 +43,7 @@ public class DirectorServlet extends HttpServlet {
 		
 		String act = request.getParameter("doThisToDino");
 		
-		String path = "/viewAllDinosServlet";
+		String path = "/viewAllDinosServlett";
 		
 		if (act.equals("delete")) {
 			
